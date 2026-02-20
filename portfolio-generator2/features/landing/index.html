@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PortfolioForge — Build Your Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!--
+    ============================================================
+    FEATURE: Landing Page
+    CONTRIBUTOR: [Contributor A — Landing Page]
+    BRANCH: feature/landing-page
+    DESCRIPTION:
+      The public-facing landing page for PortfolioForge.
+      Includes: hero section, how-it-works, theme showcase, CTA.
+      All styles are inline in this <style> block.
+      Link to generator: ../generator/generator.html
+    ============================================================
+  -->
+
+  <style>
+    /* ---- RESET & BASE ---- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #faf9f6;
+      color: #1a1a1a;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ---- CSS VARIABLES ---- */
+    :root {
+      --accent: #c8502a;
+      --accent-light: #f5e6e0;
+      --border: #e8e4de;
+      --muted: #6b6b6b;
+      --surface: #ffffff;
+      --panel: #f2f0eb;
+    }
+
+    /* ---- BUTTONS ---- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .btn-primary:hover {
+      background: #a83e20;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(200,80,42,0.3);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: #1a1a1a;
+      border-color: var(--border);
+    }
+    .btn-ghost:hover { background: var(--panel); }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+      background: rgba(250,249,246,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--accent); }
+    .nav-cta {
+      background: #1a1a1a;
+      color: #faf9f6;
+      border-color: #1a1a1a;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.85rem;
+    }
+    .nav-cta:hover { background: #333; transform: none; box-shadow: none; }
+
+    /* ---- HERO ---- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 7rem 3rem 4rem;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-text {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(80px, 14vw, 200px);
+      font-weight: 900;
+      color: var(--border);
+      opacity: 0.4;
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: -0.04em;
+    }
+    .hero-content {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 0.85rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+    .hero-title em { color: var(--accent); font-style: italic; }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 470px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* ---- HERO PREVIEW CARDS ---- */
+    .hero-visuals {
+      flex: 0 0 auto;
+      position: relative;
+      width: 320px;
+      height: 360px;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .card {
+      position: absolute;
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 1.2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .card-1 { width: 195px; top: 20px; left: 10px; z-index: 3; transform: rotate(-2deg); animation: float1 4s ease-in-out infinite; }
+    .card-2 { width: 175px; top: 50px; right: 5px; z-index: 2; transform: rotate(3deg); animation: float2 5s ease-in-out infinite; }
+    .card-3 { width: 185px; bottom: 20px; left: 55px; z-index: 1; transform: rotate(1deg); animation: float3 4.5s ease-in-out infinite; }
+    .c-bar  { height: 8px; background: var(--accent); border-radius: 4px; width: 60%; margin-bottom: 0.8rem; }
+    .c-bar-dark { background: #1a1a1a; }
+    .c-bar-grad { background: linear-gradient(90deg, #6c4ef2, #f05f8e); }
+    .c-line { height: 6px; background: var(--border); border-radius: 3px; margin-bottom: 0.4rem; }
+    .c-line-short { width: 65%; }
+    .c-dots { display: flex; gap: 0.4rem; margin-top: 0.8rem; }
+    .c-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--border); }
+    .c-dots span:first-child { background: var(--accent); }
+
+    /* ---- SECTION TITLE ---- */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    /* ---- HOW IT WORKS ---- */
+    .how {
+      padding: 6rem 3rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .steps {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .step { flex: 1; max-width: 240px; text-align: center; }
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--accent-light);
+      -webkit-text-stroke: 2px var(--accent);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .step h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .step p { font-size: 0.88rem; color: var(--muted); }
+    .step-arrow { font-size: 1.5rem; color: var(--border); margin-top: 1.5rem; align-self: center; }
+
+    /* ---- THEMES SHOWCASE ---- */
+    .themes-section {
+      padding: 6rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .theme-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--surface);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .theme-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+    .theme-preview {
+      padding: 1.5rem;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .preview-minimal { background: #f5f5f5; border-bottom: 1px solid var(--border); }
+    .preview-dark     { background: #111;   border-bottom: 1px solid #333; }
+    .preview-colorful { background: linear-gradient(135deg,#667eea15,#f093fb20); border-bottom: 1px solid #ece6ff; }
+    .p-bar  { height: 9px; border-radius: 4px; width: 50%; }
+    .p-bar-red  { background: var(--accent); }
+    .p-bar-dark { background: #e87c4e; }
+    .p-bar-grad { background: linear-gradient(90deg,#667eea,#f093fb); }
+    .p-line { height: 6px; border-radius: 3px; }
+    .p-line-gray  { background: #ddd; }
+    .p-line-dgray { background: #333; }
+    .p-line-purple{ background: #c9b8f030; }
+    .p-line-short { width: 65%; }
+    .p-tags { display: flex; gap: 0.4rem; margin-top: auto; }
+    .p-tags span { height: 18px; width: 48px; border-radius: 10px; }
+    .p-tag-gray  { background: #e0e0e0; }
+    .p-tag-neon  { background: rgba(232,124,78,0.2); border: 1px solid #e87c4e; }
+    .p-tag-color { background: linear-gradient(90deg,#667eea30,#f093fb30); }
+    .theme-info { padding: 1.2rem 1.5rem; }
+    .theme-badge {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 0.2rem 0.55rem; border-radius: 10px; font-weight: 600;
+    }
+    .badge-1 { background: var(--accent-light); color: var(--accent); }
+    .badge-2 { background: #1a1a1a15; color: #1a1a1a; }
+    .badge-3 { background: #667eea20; color: #667eea; }
+    .theme-info h3 { font-family: 'Playfair Display', serif; font-size: 1rem; margin: 0.4rem 0 0.25rem; }
+    .theme-info p  { font-size: 0.83rem; color: var(--muted); }
+
+    /* ---- CTA BANNER ---- */
+    .cta {
+      padding: 6rem 3rem;
+      background: #1a1a1a;
+      color: #fff;
+      text-align: center;
+    }
+    .cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .cta p { color: #888; margin-bottom: 2rem; }
+    .cta .btn-primary { font-size: 1rem; padding: 1rem 2.2rem; }
+
+    /* ---- FOOTER ---- */
+    footer {
+      padding: 2rem 3rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ---- ANIMATIONS ---- */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float1 { 0%,100%{transform:rotate(-2deg) translateY(0)} 50%{transform:rotate(-2deg) translateY(-10px)} }
+    @keyframes float2 { 0%,100%{transform:rotate(3deg) translateY(0)}  50%{transform:rotate(3deg) translateY(-8px)} }
+    @keyframes float3 { 0%,100%{transform:rotate(1deg) translateY(0)}  50%{transform:rotate(1deg) translateY(-12px)} }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 900px) {
+      .hero { flex-direction: column; padding: 6rem 1.5rem 3rem; text-align: center; }
+      .hero-sub { margin: 0 auto 2rem; }
+      .hero-actions { justify-content: center; }
+      .hero-visuals { width: 100%; height: 200px; }
+      .themes-grid { grid-template-columns: 1fr; }
+      .steps { flex-direction: column; align-items: center; }
+      .step-arrow { transform: rotate(90deg); }
+      nav { padding: 0.75rem 1.5rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Portfolio<span>Forge</span></div>
+    <a href="../generator/generator.html" class="btn nav-cta">Start Building →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-text" aria-hidden="true">PORTFOLIO</div>
+
+    <div class="hero-content">
+      <div class="hero-tag">Open Source · Free Forever</div>
+      <h1 class="hero-title">
+        Your story,<br />
+        <em>beautifully told.</em>
+      </h1>
+      <p class="hero-sub">
+        Fill in a form. Pick a theme. Download your portfolio website — no coding required.
+        Built with HTML, CSS &amp; JavaScript.
+      </p>
+      <div class="hero-actions">
+        <a href="../generator/generator.html" class="btn btn-primary">Build My Portfolio</a>
+        <a href="#how" class="btn btn-ghost">See How It Works</a>
+      </div>
+    </div>
+
+    <div class="hero-visuals" aria-hidden="true">
+      <div class="card card-1">
+        <div class="c-bar"></div>
+        <div class="c-line"></div>
+        <div class="c-line c-line-short"></div>
+        <div class="c-dots"><span></span><span></span><span></span></div>
+      </div>
+      <div class="card card-2">
+        <div class="c-bar c-bar-dark"></div>
+        <div class="c-line"></div>
+        <div class="c-line c-line-short"></div>
+      </div>
+      <div class="card card-3">
+        <div class="c-bar c-bar-grad"></div>
+        <div class="c-line"></div>
+        <div class="c-line c-line-short"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div style="max-width:1100px;margin:0 auto;padding:0 3rem;">
+      <h2 class="section-title">How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Fill the Form</h3>
+          <p>Enter your name, bio, skills, projects, and social links in our simple form.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Pick a Theme</h3>
+          <p>Choose from three professionally designed portfolio themes and preview instantly.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Download &amp; Deploy</h3>
+          <p>Export your portfolio as a ready-to-host HTML file in one click.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THEMES SHOWCASE -->
+  <section style="padding:6rem 3rem;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <h2 class="section-title">Three stunning themes</h2>
+      <div class="themes-grid">
+
+        <div class="theme-card">
+          <div class="theme-preview preview-minimal">
+            <div class="p-bar p-bar-red"></div>
+            <div class="p-line p-line-gray"></div>
+            <div class="p-line p-line-gray p-line-short"></div>
+            <div class="p-tags"><span class="p-tag-gray"></span><span class="p-tag-gray"></span><span class="p-tag-gray"></span></div>
+          </div>
+          <div class="theme-info">
+            <span class="theme-badge badge-1">Theme 1</span>
+            <h3>Minimal Clean</h3>
+            <p>Sharp, typographic, distraction-free.</p>
+          </div>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-preview preview-dark">
+            <div class="p-bar p-bar-dark"></div>
+            <div class="p-line p-line-dgray"></div>
+            <div class="p-line p-line-dgray p-line-short"></div>
+            <div class="p-tags"><span class="p-tag-neon"></span><span class="p-tag-neon"></span><span class="p-tag-neon"></span></div>
+          </div>
+          <div class="theme-info">
+            <span class="theme-badge badge-2">Theme 2</span>
+            <h3>Dark Bold</h3>
+            <p>Dramatic, high-contrast, impactful.</p>
+          </div>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-preview preview-colorful">
+            <div class="p-bar p-bar-grad"></div>
+            <div class="p-line p-line-purple"></div>
+            <div class="p-line p-line-purple p-line-short"></div>
+            <div class="p-tags"><span class="p-tag-color"></span><span class="p-tag-color"></span><span class="p-tag-color"></span></div>
+          </div>
+          <div class="theme-info">
+            <span class="theme-badge badge-3">Theme 3</span>
+            <h3>Colorful Creative</h3>
+            <p>Vibrant, expressive, unforgettable.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Ready to stand out?</h2>
+    <p>It takes less than 5 minutes. No account needed.</p>
+    <a href="../generator/generator.html" class="btn btn-primary">Build My Portfolio Now →</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="logo">Portfolio<span>Forge</span></span>
+    <span>Open-source · Built with HTML, CSS &amp; JavaScript</span>
+  </footer>
+
+</body>
+</html>

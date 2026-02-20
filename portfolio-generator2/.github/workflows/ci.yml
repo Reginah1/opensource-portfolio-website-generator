@@ -1,0 +1,51 @@
+name: CI — Lint & Validate
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Validate Project Files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install HTMLHint
+        run: npm install -g htmlhint
+
+      - name: Lint HTML files
+        run: npx htmlhint "features/**/*.html"
+        continue-on-error: true
+
+      - name: Check all required files exist
+        run: |
+          echo "Checking required files..."
+          files=(
+            "features/landing/index.html"
+            "features/generator/generator.html"
+            "features/themes/theme1.html"
+            "features/themes/theme2.html"
+            "features/themes/theme3.html"
+            "features/export/export.js"
+            "README.md"
+            "CONTRIBUTING.md"
+            "LICENSE.md"
+          )
+          fail=false
+          for f in "${files[@]}"; do
+            [ -f "$f" ] && echo "✅ $f" || { echo "❌ MISSING: $f"; fail=true; }
+          done
+          [ "$fail" = true ] && exit 1 || echo "All required files present ✅"
+
+      - name: Done
+        run: echo "CI complete ✅"

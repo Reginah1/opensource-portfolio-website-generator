@@ -7,6 +7,17 @@ on:
     branches: [ main ]
 
 jobs:
+  block-direct-push:
+    name: Block Direct Push to Main
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Reject direct push
+        run: |
+          echo "⚠️ Direct push to main detected by ${{ github.actor }}"
+          echo "Please open a pull request instead of pushing directly to main."
+          exit 1
+
   validate:
     name: Validate Project Files
     runs-on: ubuntu-latest

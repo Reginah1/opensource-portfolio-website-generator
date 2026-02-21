@@ -1,18 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Theme 1 — Minimal Clean (Demo)</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Jost:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Theme 1 — Minimal Clean (Demo)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 
-    <!--
+  <!--
     ============================================================
     FEATURE: Themes — Theme 1 (Minimal Clean)
-    CONTRIBUTOR: [Contributor E — Themes]
+    CONTRIBUTOR: [Contributor C — Themes]
     BRANCH: feature/themes
     FILES IN THIS FOLDER: theme1.html, theme2.html, theme3.html
     DESCRIPTION:
@@ -23,5 +20,224 @@
       The generator (../generator/generator.html) embeds
       this theme's CSS + HTML dynamically at runtime.
     ============================================================
-  --></head>
+  -->
+
+  <style>
+    /* ---- RESET ---- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: #fafaf8;
+      color: #1c1c1c;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- HEADER ---- */
+    .hdr {
+      border-bottom: 1px solid #e8e4de;
+      padding: 3rem 4rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 2rem;
+      background: #fff;
+    }
+    .hdr-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .hdr-title {
+      font-size: 0.85rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      margin-top: 0.4rem;
+    }
+    .hdr-contact {
+      display: flex; flex-direction: column;
+      align-items: flex-end; gap: 0.25rem;
+      font-size: 0.8rem; color: #888;
+    }
+    .hdr-contact a { color: #c8502a; text-decoration: none; }
+    .hdr-contact a:hover { text-decoration: underline; }
+
+    /* ---- LAYOUT ---- */
+    .body { display: grid; grid-template-columns: 260px 1fr; }
+
+    /* ---- SIDEBAR ---- */
+    .sb {
+      border-right: 1px solid #e8e4de;
+      padding: 2.5rem 2rem;
+      background: #fff;
+    }
+    .sb section { margin-bottom: 2.2rem; }
+    .sb-heading {
+      font-size: 0.68rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: #888; font-weight: 500;
+      margin-bottom: 0.9rem; padding-bottom: 0.45rem;
+      border-bottom: 1px solid #e8e4de;
+    }
+    .bio { font-size: 0.88rem; line-height: 1.75; }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .skill {
+      font-size: 0.73rem; font-weight: 500;
+      background: #f0f0ec; border-radius: 3px;
+      padding: 0.22rem 0.55rem;
+    }
+
+    .links { display: flex; flex-direction: column; gap: 0.45rem; }
+    .links a {
+      display: flex; align-items: center; gap: 0.45rem;
+      font-size: 0.82rem; color: #c8502a; text-decoration: none;
+    }
+    .links a:hover { text-decoration: underline; }
+
+    /* ---- MAIN CONTENT ---- */
+    .main { padding: 3rem 3.5rem; }
+    .section { margin-bottom: 2.5rem; }
+    .sec-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 600; font-style: italic;
+      margin-bottom: 1.4rem;
+    }
+
+    /* ---- PROJECT GRID ---- */
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+    .pc {
+      border: 1px solid #e8e4de; border-radius: 8px; padding: 1.3rem;
+      position: relative; overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .pc::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%; background: #c8502a;
+      transform: scaleY(0); transition: transform 0.2s; transform-origin: top;
+    }
+    .pc:hover::before { transform: scaleY(1); }
+    .pc:hover { border-color: #c8502a; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+    .pc-name { font-size: 0.92rem; font-weight: 500; margin-bottom: 0.35rem; }
+    .pc-desc { font-size: 0.8rem; color: #888; line-height: 1.6; margin-bottom: 0.75rem; }
+    .pc-link { font-size: 0.76rem; color: #c8502a; text-decoration: none; font-weight: 500; }
+    .pc-link:hover { text-decoration: underline; }
+
+    /* ---- FOOTER ---- */
+    footer {
+      text-align: center; padding: 1.5rem;
+      font-size: 0.73rem; color: #aaa;
+      border-top: 1px solid #e8e4de; letter-spacing: 0.05em;
+    }
+
+    /* ---- DEMO BADGE ---- */
+    .demo-badge {
+      position: fixed; bottom: 1.2rem; right: 1.2rem;
+      background: #1a1a1a; color: #fff;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem; padding: 0.5rem 0.9rem;
+      border-radius: 20px; z-index: 100;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .demo-badge a { color: #c8502a; text-decoration: none; }
+    .demo-badge a:hover { text-decoration: underline; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 700px) {
+      .hdr { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+      .hdr-contact { align-items: flex-start; }
+      .body { grid-template-columns: 1fr; }
+      .sb { border-right: none; border-bottom: 1px solid #e8e4de; }
+      .main { padding: 2rem 1.5rem; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DEMO BADGE -->
+  <div class="demo-badge">
+    Theme 1 Preview ·
+    <a href="../generator/generator.html">Use the Generator →</a>
+  </div>
+
+  <header class="hdr">
+    <div>
+      <div class="hdr-name">Amina Yusuf</div>
+      <div class="hdr-title">Frontend Developer</div>
+    </div>
+    <div class="hdr-contact">
+      <span>amina@example.com</span>
+      <span>📍 Abuja, Nigeria</span>
+      <a href="#" target="_blank">GitHub ↗</a>
+      <a href="#" target="_blank">LinkedIn ↗</a>
+    </div>
+  </header>
+
+  <div class="body">
+    <aside class="sb">
+      <section>
+        <div class="sb-heading">About</div>
+        <p class="bio">
+          I'm a passionate frontend developer with 3 years of experience crafting accessible,
+          performant web interfaces. I love clean code, thoughtful design, and solving real
+          problems with technology.
+        </p>
+      </section>
+      <section>
+        <div class="sb-heading">Skills</div>
+        <div class="skills">
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">React</span>
+          <span class="skill">Node.js</span>
+          <span class="skill">Git</span>
+          <span class="skill">Figma</span>
+        </div>
+      </section>
+      <section>
+        <div class="sb-heading">Links</div>
+        <div class="links">
+          <a href="#">🐙 GitHub</a>
+          <a href="#">💼 LinkedIn</a>
+          <a href="mailto:amina@example.com">✉️ amina@example.com</a>
+        </div>
+      </section>
+    </aside>
+
+    <main class="main">
+      <section class="section">
+        <h2 class="sec-heading">Projects</h2>
+        <div class="grid">
+          <div class="pc">
+            <div class="pc-name">E-Commerce Platform</div>
+            <div class="pc-desc">Full-stack e-commerce app with product listings, cart and Paystack payment integration. Built with React and Node.js.</div>
+            <a class="pc-link" href="#">View Project →</a>
+          </div>
+          <div class="pc">
+            <div class="pc-name">Weather Dashboard</div>
+            <div class="pc-desc">Real-time weather dashboard using the OpenWeatherMap API with location search and 7-day forecast.</div>
+            <a class="pc-link" href="#">View Project →</a>
+          </div>
+          <div class="pc">
+            <div class="pc-name">Task Manager App</div>
+            <div class="pc-desc">Kanban-style task manager with drag-and-drop, built with vanilla JavaScript and localStorage persistence.</div>
+            <a class="pc-link" href="#">View Project →</a>
+          </div>
+          <div class="pc">
+            <div class="pc-name">Blog CMS</div>
+            <div class="pc-desc">Content management system with markdown support, image uploads, and an admin panel.</div>
+            <a class="pc-link" href="#">View Project →</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>Amina Yusuf · Built with PortfolioForge</footer>
+
+</body>
 </html>

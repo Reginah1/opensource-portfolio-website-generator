@@ -1,5 +1,4 @@
 # PortfolioForge 🛠️
-
 > An open-source portfolio website generator — HTML, CSS &amp; JavaScript only.
 
 Fill in a form → Pick a theme → Download your portfolio. No frameworks, no build tools, no account needed.
@@ -19,10 +18,10 @@ portfolio-generator/
 │   ├── generator/                   👤 Contributor B — feature/generator
 │   │   └── generator.html           3-step form + live preview + theme HTML generation
 │   │
-│   ├── themes/                      👤 Contributor C, D  and E — feature/themes
-│   │   ├── theme1.html              👤 Contributor E Minimal Clean — standalone demo
-│   │   ├── theme2.html              👤 Contributor C Dark Bold — standalone demo
-│   │   └── theme3.html              👤 Contributor D Colorful Creative — standalone demo
+│   ├── themes/                      👤 Contributor C — feature/themes
+│   │   ├── theme1.html              Minimal Clean — standalone demo
+│   │   ├── theme2.html              Dark Bold — standalone demo
+│   │   └── theme3.html              Colorful Creative — standalone demo
 │   │
 │   └── export/                      👤 Contributor D — feature/export
 │       └── export.js                Download logic — exposes window.downloadPortfolio()
@@ -60,21 +59,21 @@ open features/generator/generator.html
 
 ## 👥 Team Roles & Members
 
-| Role                   | Member | Branch                 | Responsibility                              |
-| ---------------------- | ------ | ---------------------- | ------------------------------------------- |
-| **Project Lead**       | [Name] | —                      | Coordination, GitHub Issues, project report |
-| **Repository Manager** | [Name] | —                      | Repo setup, CI/CD, README, CONTRIBUTING     |
-| **Maintainer**         | [Name] | —                      | Code quality, PR review                     |
-| **Maintainer**         | [Name] | —                      | Issue triage, code quality                  |
-| **Code Reviewer**      | [Name] | —                      | Pull request reviews                        |
-| **Code Reviewer**      | [Name] | —                      | Pull request reviews                        |
-| **Contributor A**      | [Name] | `feature/landing-page` | `features/landing/index.html`               |
-| **Contributor B**      | [Name] | `feature/generator`    | `features/generator/generator.html`         |
-| **Contributor C**      | [Name] | `feature/themes`       | `features/themes/theme1,2,3.html`           |
-| **Contributor D**      | [Name] | `feature/export`       | `features/export/export.js`                 |
-| **Contributor**        | [Name] | —                      | Testing & documentation                     |
-| **Contributor**        | [Name] | —                      | Testing & documentation                     |
-| **Contributor**        | [Name] | —                      | Testing & documentation                     |
+| Role | Member | Branch | Responsibility |
+|---|---|---|---|
+| **Project Lead** | [Name] | — | Coordination, GitHub Issues, project report |
+| **Repository Manager** | [Name] | — | Repo setup, CI/CD, README, CONTRIBUTING |
+| **Maintainer** | [Name] | — | Code quality, PR review |
+| **Maintainer** | [Name] | — | Issue triage, code quality |
+| **Code Reviewer** | [Name] | — | Pull request reviews |
+| **Code Reviewer** | [Name] | — | Pull request reviews |
+| **Contributor A** | [Name] | `feature/landing-page` | `features/landing/index.html` |
+| **Contributor B** | [Name] | `feature/generator` | `features/generator/generator.html` |
+| **Contributor C** | [Name] | `feature/themes` | `features/themes/theme1,2,3.html` |
+| **Contributor D** | [Name] | `feature/export` | `features/export/export.js` |
+| **Contributor** | [Name] | — | Testing & documentation |
+| **Contributor** | [Name] | — | Testing & documentation |
+| **Contributor** | [Name] | — | Testing & documentation |
 
 ---
 
@@ -82,17 +81,16 @@ open features/generator/generator.html
 
 Each contributor **only edits files in their assigned folder**. This prevents merge conflicts.
 
-| Folder                | Owner         | Files they touch                            |
-| --------------------- | ------------- | ------------------------------------------- |
-| `features/landing/`   | Contributor A | `index.html` only                           |
-| `features/generator/` | Contributor B | `generator.html` only                       |
-| `features/themes/`    | Contributor C | `theme1.html`, `theme2.html`, `theme3.html` |
-| `features/export/`    | Contributor D | `export.js` only                            |
+| Folder | Owner | Files they touch |
+|---|---|---|
+| `features/landing/` | Contributor A | `index.html` only |
+| `features/generator/` | Contributor B | `generator.html` only |
+| `features/themes/` | Contributor C | `theme1.html`, `theme2.html`, `theme3.html` |
+| `features/export/` | Contributor D | `export.js` only |
 
 ---
 
 ## 🛠️ Tech Stack
-
 - **HTML5** — Semantic markup, no frameworks
 - **CSS3** — Inline per file, variables, grid, flexbox, animations
 - **JavaScript ES6+** — Vanilla JS, no libraries
@@ -101,9 +99,7 @@ Each contributor **only edits files in their assigned folder**. This prevents me
 ---
 
 ## 🤝 Contributing
-
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 📄 License
-
 MIT License — see [LICENSE.md](LICENSE.md).

@@ -24,12 +24,12 @@ portfolio-generator/
 │   │   ├── theme2.html              👤 Contributor C Dark Bold — standalone demo
 │   │   └── theme3.html              👤 Contributor D Colorful Creative — standalone demo
 │   │
-│   └── export/                      👤 Contributor D — feature/export
+│   └── export/                      👤 Contributor F — feature/export
 │       └── export.js                Download logic — exposes window.downloadPortfolio()
 │
-├── README.md                        👤 Repository Manager
-├── CONTRIBUTING.md                  👤 Repository Manager
-├── LICENSE.md                       👤 Repository Manager
+├── README.md                        👤 Documenter A
+├── CONTRIBUTING.md                  👤 Documenter B
+├── LICENSE.md                       👤 Documenter C
 └── .github/
     └── workflows/
         └── ci.yml                   👤 Repository Manager — CI/CD pipeline
@@ -60,21 +60,23 @@ open features/generator/generator.html
 
 ## 👥 Team Roles & Members
 
-| Role                   | Member | Branch                 | Responsibility                              |
-| ---------------------- | ------ | ---------------------- | ------------------------------------------- |
-| **Project Lead**       | [Name] | —                      | Coordination, GitHub Issues, project report |
-| **Repository Manager** | [Name] | —                      | Repo setup, CI/CD, README, CONTRIBUTING     |
-| **Maintainer**         | [Name] | —                      | Code quality, PR review                     |
-| **Maintainer**         | [Name] | —                      | Issue triage, code quality                  |
-| **Code Reviewer**      | [Name] | —                      | Pull request reviews                        |
-| **Code Reviewer**      | [Name] | —                      | Pull request reviews                        |
-| **Contributor A**      | [Name] | `feature/landing-page` | `features/landing/index.html`               |
-| **Contributor B**      | [Name] | `feature/generator`    | `features/generator/generator.html`         |
-| **Contributor C**      | [Name] | `feature/themes`       | `features/themes/theme1,2,3.html`           |
-| **Contributor D**      | [Name] | `feature/export`       | `features/export/export.js`                 |
-| **Contributor**        | [Name] | —                      | Testing & documentation                     |
-| **Contributor**        | [Name] | —                      | Testing & documentation                     |
-| **Contributor**        | [Name] | —                      | Testing & documentation                     |
+| Role                   | Member | Branch                 | Responsibility                                       |
+| ---------------------- | ------ | ---------------------- | ---------------------------------------------------- |
+| **Project Lead**       | [Name] | —                      | Coordination, GitHub Issues, project report          |
+| **Repository Manager** | [Name] | —                      | Repo setup, CI/CD, README, CONTRIBUTING              |
+| **Maintainer**         | [Name] | —                      | Code quality, PR, Issue triage, code quality, review |
+| **Code Reviewer**      | [Name] | —                      | Pull request                                         |
+| **Code Reviewer**      | [Name] | —                      | Pull request reviews                                 |
+| **Code Reviewer**      | [Name] | —                      | Pull request reviews                                 |
+| **Contributor A**      | [Name] | `feature/landing-page` | `features/landing/index.html`                        |
+| **Contributor B**      | [Name] | `feature/generator`    | `features/generator/generator.html`                  |
+| **Contributor C**      | [Name] | `feature/themes`       | `features/themes/theme1,2,3.html`                    |
+| **Contributor D**      | [Name] | `feature/themes`       | `features/themes/theme1,2,3.html`                    |
+| **Contributor E**      | [Name] | `feature/themes`       | `features/themes/theme1,2,3.html`                    |
+| **Contributor F**      | [Name] | `feature/export`       | `features/export/export.js`                          |
+| **Contributor**        | [Name] | —                      | documentation                                        |
+| **Contributor**        | [Name] | —                      | documentation                                        |
+| **Contributor**        | [Name] | —                      | documentation                                        |
 
 ---
 
@@ -82,12 +84,14 @@ open features/generator/generator.html
 
 Each contributor **only edits files in their assigned folder**. This prevents merge conflicts.
 
-| Folder                | Owner         | Files they touch                            |
-| --------------------- | ------------- | ------------------------------------------- |
-| `features/landing/`   | Contributor A | `index.html` only                           |
-| `features/generator/` | Contributor B | `generator.html` only                       |
-| `features/themes/`    | Contributor C | `theme1.html`, `theme2.html`, `theme3.html` |
-| `features/export/`    | Contributor D | `export.js` only                            |
+| Folder                | Owner         | Files they touch |
+| --------------------- | ------------- | ---------------- |
+| `features/landing/`   | Contributor A | `index.html`     |
+| `features/generator/` | Contributor B | `generator.html` |
+| `features/themes/`    | Contributor C | `theme1.html`    |
+| `features/themes/`    | Contributor C | `theme2.html`    |
+| `features/themes/`    | Contributor C | `theme3.html`    |
+| `features/export/`    | Contributor D | `export.js`      |
 
 ---
 
